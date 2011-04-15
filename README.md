@@ -17,16 +17,14 @@ authentication seems to be broken on `$.ajax` calls.
 
 ### Live Feed Example
 
-    $(document).ready(function() {
-      var authCxt = {username: 'myusr', password: 'mypswd'};
-      var convoreApi = new ConvoreAPI(authCxt);
-      convoreApi.listenToFeed(function( messages ) {
+      var convoreApi = new ConvoreAPI( {username: 'myusr', password: 'mypswd'} );
+
+      convoreApi.listenToFeed( function( messages ) {
         for(var i=0; i<messages.length; i++) {
           var msg = messages[i];
           $('<div class="feed-item">Msg kind: <b>' + msg.kind + '</b> by <i>' + msg.user.username + '</i></div>').appendTo('body');
         }
       });
-    });
 
 ### Fetching Groups Example
 

@@ -28,16 +28,12 @@ authentication seems to be broken on `$.ajax` calls.
 
 ### Fetching Groups Example
 
-    var convoreApi = new ConvoreApi(authCtx);
-
-    convoreApi.fetchGroups( renderGroups );
-
-    function renderGroups( arrayOfGroups ) {
-      for(var i=0; i<arrayOfGroups.length; i++) {
-        var group = arrayOfGroups[i];
+    convoreApi.fetchGroups( function( groups ) {
+      for(var i=0; i<groups.length; i++) {
+        var group = groups[i];
         $('<div class="group-item">' + group.name + ' by ' + group.creator.username + '</div>').appendTo('body');
       }
-    }
+    });
 
 ## The authContext object
 

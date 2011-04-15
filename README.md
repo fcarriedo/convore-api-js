@@ -19,7 +19,7 @@ authentication seems to be broken on `$.ajax` calls.
 
     var convoreApi = new ConvoreAPI( {username: 'myusr', password: 'mypswd'} );
 
-    convoreApi.listenToFeed( function( messages ) {
+    convoreApi.listenToLiveFeed( function( messages ) {
       for(var i=0; i<messages.length; i++) {
         var msg = messages[i];
         $('<div class="feed-item">Msg kind: <b>' + msg.kind + '</b> by <i>' + msg.user.username + '</i></div>').appendTo('body');

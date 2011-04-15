@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style type='text/css'>body{font-family: sans-serif; color: #333;} .note{font-size: 9pt; color: #999;}</style>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.4.2.min.js'></script>
+    <script type="text/javascript" src='../lib/convore-api.js'></script>
+
+    <title>Convore Live Feed Example</title>
+
+    <script type='text/javascript'>
+
+      $(document).ready(function() {
+        var authCxt = {username: 'myusr', password: 'mypswd'};
+        var convoreApi = new ConvoreAPI(authCxt);
+        convoreApi.listenToFeed(function( messages ) {
+          for(var i=0; i<messages.length; i++) {
+            var msg = messages[i];
+            $('<div class="feed-item">Msg kind: <b>' + msg.kind + '</b> by <i>' + msg.user.username + '</i></div>').appendTo('body');
+          }
+        });
+      });
+
+    </script>
+
+  </head>
+
+  <body>
+    <h2>Convore API Live Feed example</h2>
+    <p><i>Live Feed</i> messages will be appended to the body</p>
+    <p class='note'>
+      Note: Just modify the code with your username/password.<br/>
+      Subnote: Wait until activity happens in your account.
+    </p>
+  </body>
+
+</html>

@@ -1,6 +1,6 @@
 # Convore API js
 
-Convore client
+A Convore API JavaScript client
 
 ## Dependencies
 
@@ -8,7 +8,7 @@ The only dependency is on *jQuery 1.4.2* for all AJAX handling so it has
 to be preceded by its declaration.
 
     <script src='jquery.min.js' type='text/javascript'></script>
-    <script src='convore-api.min.js' type='text/javascript'></script>
+    <script src='convore-api.js' type='text/javascript'></script>
 
 Don't know if newer versions of jQuery would work correctly since basic 
 authentication seems to be broken on `$.ajax` calls.
@@ -24,42 +24,39 @@ where `authContext` is an object with the following props:
   * *onAuthSuccess* - The callback to execute upon a successful authentication. `function`
   * *onAuthError* - The callback to execute on authentication error. `function`
 
-## Example
+## The authContext object
 
-First we create the authentication context. Parameters here are going to be used for authenticating further API calls.
+The Authentication Context object carries the credentials for any
+further calls in the API.
 
     var authCtx = {
       username: 'myuser',
       password: 'mypassword',
-      onAuthSuccess: function() {
-        console.log('Authentication successful!');
-      },
       onAuthError: function() {
-        console.log('An error just happened..!');
+        console.log('An auth error just happened..!');
       }
     };
 
-We then create an instance of ConvoreApi with the authentication context
-object we just created.
+## Examples
+
+### Live Feed Example
+
+    $(document).ready(function() {
+      var authCxt = {username: 'myusr', password: 'mypswd'};
+      var convoreApi = new ConvoreAPI(authCxt);
+      convoreApi.listenToFeed(function( messages ) {
+        for(var i=0; i<messages.length; i++) {
+          var msg = messages[i];
+          $('<div class="feed-item">Msg kind: <b>' + msg.kind + '</b> by <i>' + msg.user.username + '</i></div>').appendTo('body');
+        }
+      });
+    });
+
+### Fetching Groups Example
 
     var convoreApi = new ConvoreApi(authCtx);
 
-...and we can start using the library:
-
-    // Connect to the feed and listen constantly. (Long polling strategy).
-    // The callback will be triggered every time a set of messages arrive.
-    // It will reconnect automatically upon desconnection.
-    convoreApi.listenToFeed( renderLiveFeed );
-
     convoreApi.getGroups( renderGroups );
-
-    // The callback receives an array if messages
-    function renderLiveFeed( arrayOfMsgs ) {
-      for(var i=0; i<arrayOfMsgs.length; i++) {
-        var msg = arrayOfMsgs[i];
-        $('<div class="feed-item">' + msg.kind + ' by ' + msg.user.username + '</div>').appendTo('body');
-      }
-    }
 
     // The group callback receives an array of groups
     function renderGroups( arrayOfGroups ) {

@@ -1,14 +1,14 @@
-= Convore API js
+# Convore API js
 
 Convore client
 
-== Dependencies
+## Dependencies
 
 The only dependency is on *jQuery 1.4.2* for all AJAX handling. Don't know
 if newer versions would work correctly since basic authentication seems
 to be broken on `$.ajax` calls.
 
-== Usage
+## Usage
 
     var convoreApi = new ConvoreApi(authContext);
 
@@ -19,7 +19,7 @@ where `authContext` is an object with the following props:
   * *onAuthSuccess* - The callback to execute upon a successful authentication. `function`
   * *onAuthError* - The callback to execute on authentication error. `function`
 
-== Example
+## Example
 
 First we create the authentication context.
 
@@ -41,8 +41,9 @@ object we just created.
 
 ...and we can start using the library:
 
-    // Connect to the feed and listen constantly. The callback will be
-    // called every time a message arrives.
+    // Connect to the feed and listen constantly. (Long polling strategy).
+    // The callback will be triggered every time a set of messages arrive.
+    // It will reconnect automatically upon desconnection.
     convoreApi.listenToFeed( renderLiveFeed );
 
     convoreApi.getGroups( renderGroups );
@@ -59,6 +60,6 @@ object we just created.
     function renderGroups( arrayOfGroups ) {
       for(var i=0; i<arrayOfGroups.length; i++) {
         var group = arrayOfGroups[i];
-        $('<div class="group-item">' + msg.kind + ' by ' + msg.user.username + '</div>').appendTo('body');
+        $('<div class="group-item">' + group.name + ' by ' + group.creator.username + '</div>').appendTo('body');
       }
     }

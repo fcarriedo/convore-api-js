@@ -28,8 +28,6 @@ authentication seems to be broken on `$.ajax` calls.
 
 ### Fetching Groups Example
 
-    var convoreApi = new ConvoreApi(authCtx);
-
     convoreApi.fetchGroups( renderGroups );
 
     function renderGroups( arrayOfGroups ) {

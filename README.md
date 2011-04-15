@@ -21,7 +21,7 @@ where `authContext` is an object with the following props:
 
 ## Example
 
-First we create the authentication context.
+First we create the authentication context. Parameters here are going to be used for authenticating further API calls.
 
     var authCtx = {
       username: 'myuser',

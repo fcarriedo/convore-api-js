@@ -4,9 +4,14 @@ Convore client
 
 ## Dependencies
 
-The only dependency is on *jQuery 1.4.2* for all AJAX handling. Don't know
-if newer versions would work correctly since basic authentication seems
-to be broken on `$.ajax` calls.
+The only dependency is on *jQuery 1.4.2* for all AJAX handling so it has
+to be preceded by its declaration.
+
+    <script src='jquery.min.js' type='text/javascript'></script>
+    <script src='convore-api.min.js' type='text/javascript'></script>
+
+Don't know if newer versions of jQuery would work correctly since basic 
+authentication seems to be broken on `$.ajax` calls.
 
 ## Usage
 

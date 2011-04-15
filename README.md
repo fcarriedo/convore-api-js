@@ -13,21 +13,17 @@ to be preceded by its declaration.
 Don't know if newer versions of jQuery would work correctly since basic 
 authentication seems to be broken on `$.ajax` calls.
 
-## Usage
+## The authContext object
 
     var convoreApi = new ConvoreApi(authContext);
 
-where `authContext` is an object with the following props:
+where `authContext` object carries the credentials for the API calls that require authentication.
 
   * *username* - The authentication username `string`
   * *password* - The authentication password. `string`
-  * *onAuthSuccess* - The callback to execute upon a successful authentication. `function`
   * *onAuthError* - The callback to execute on authentication error. `function`
 
-## The authContext object
-
-The Authentication Context object carries the credentials for any
-further calls in the API.
+Example:
 
     var authCtx = {
       username: 'myuser',

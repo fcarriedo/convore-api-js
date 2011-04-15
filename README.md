@@ -13,26 +13,6 @@ to be preceded by its declaration.
 Don't know if newer versions of jQuery would work correctly since basic 
 authentication seems to be broken on `$.ajax` calls.
 
-## The authContext object
-
-    var convoreApi = new ConvoreApi(authContext);
-
-where `authContext` object carries the credentials for the API calls that require authentication.
-
-  * *username* - The authentication username `string`
-  * *password* - The authentication password. `string`
-  * *onAuthError* - The callback to execute on authentication error. `function`
-
-Example:
-
-    var authCtx = {
-      username: 'myuser',
-      password: 'mypassword',
-      onAuthError: function() {
-        console.log('An auth error just happened..!');
-      }
-    };
-
 ## Examples
 
 ### Live Feed Example
@@ -61,3 +41,23 @@ Example:
         $('<div class="group-item">' + group.name + ' by ' + group.creator.username + '</div>').appendTo('body');
       }
     }
+
+## The authContext object
+
+    var convoreApi = new ConvoreApi(authContext);
+
+where `authContext` object carries the credentials for the API calls that require authentication.
+
+  * *username* - The authentication username `string`
+  * *password* - The authentication password. `string`
+  * *onAuthError* - The callback to execute on authentication error. `function`
+
+Example:
+
+    var authCtx = {
+      username: 'myuser',
+      password: 'mypassword',
+      onAuthError: function() {
+        console.log('An auth error just happened..!');
+      }
+    };

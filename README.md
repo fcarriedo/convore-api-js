@@ -39,6 +39,7 @@ convoreApi.fetchGroups( function( groups ) {
     $('<div class="group-item">' + group.name + ' by ' + group.creator.username + '</div>').appendTo('body');
   }
 });
+```
 
 ## The authContext object
 

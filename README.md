@@ -17,6 +17,7 @@ authentication seems to be broken on `$.ajax` calls.
 
 ### Live Feed Example
 
+``` javascript
     var convoreApi = new ConvoreAPI( {username: 'myusr', password: 'mypswd'} );
 
     convoreApi.listenToLiveFeed( function( messages ) {
@@ -25,6 +26,7 @@ authentication seems to be broken on `$.ajax` calls.
         $('<div class="feed-item">Msg kind: <b>' + msg.kind + '</b> by <i>' + msg.user.username + '</i></div>').appendTo('body');
       }
     });
+```
 
 ### Fetching Groups Example
 

@@ -43,7 +43,9 @@ convoreApi.fetchGroups( function( groups ) {
 
 ## The authContext object
 
-    var convoreApi = new ConvoreApi(authContext);
+``` javascript
+var convoreApi = new ConvoreApi(authContext);
+```
 
 where `authContext` object carries the credentials for the API calls that require authentication.
 
